@@ -91,8 +91,8 @@ public class GameToggle implements CommandExecutor {
 
                 if (toggle) {
                     if (timer == 0) {
-                        tick[0] = (int) (Math.random() * plugin.getConfig().getInt("maxtick")) + plugin.getConfig().getInt("mintick");
-                        cooltime[0] = (int) (Math.random() * plugin.getConfig().getInt("maxcool")) + plugin.getConfig().getInt("mincool");
+                        tick[0] = (int) (Math.random() * (plugin.getConfig().getInt("maxtick") - plugin.getConfig().getInt("mintick"))) + plugin.getConfig().getInt("mintick");
+                        cooltime[0] = (int) (Math.random() * (plugin.getConfig().getInt("maxcool") - plugin.getConfig().getInt("mincool"))) + plugin.getConfig().getInt("mincool");
                         for (Player target : players) {
                             target.sendTitle(ChatColor.YELLOW + "?", ChatColor.RED + "무" + ChatColor.GREEN + "궁화꽃이 피었습니다", 0, cooltime[0], 0);
                             target.playSound(target.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1, 0.89F);

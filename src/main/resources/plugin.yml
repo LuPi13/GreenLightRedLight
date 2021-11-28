@@ -1,0 +1,11 @@
+name: GreenLightRedLight
+version: ${project.version}
+main: yasking.lupi13.greenlightredlight.GreenLightRedLight
+api-version: 1.17
+authors: [ LuPi13 ]
+description: JangHyunUk Gundae Present
+website: https://github.com/LuPi13
+commands:
+  glrl:
+    description: Starts GLRL
+    usage: /<command>

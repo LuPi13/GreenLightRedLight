@@ -82,13 +82,6 @@ public class GameToggle implements CommandExecutor {
         new BukkitRunnable() {
             @Override
             public void run() {
-                for (Player target : players) {
-                    if (!target.getGameMode().equals(GameMode.SURVIVAL)) {
-                        target.sendMessage("안돼 돌아가");
-                        target.setGameMode(GameMode.SURVIVAL);
-                    }
-                }
-
                 if (toggle) {
                     if (timer == 0) {
                         tick[0] = (int) (Math.random() * (plugin.getConfig().getInt("maxtick") - plugin.getConfig().getInt("mintick"))) + plugin.getConfig().getInt("mintick");

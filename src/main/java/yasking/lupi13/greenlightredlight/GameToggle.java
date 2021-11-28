@@ -10,6 +10,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class GameToggle implements CommandExecutor {
@@ -77,7 +78,8 @@ public class GameToggle implements CommandExecutor {
     public void gamecount(List<Player> players) {
         final int[] tick = {0};
         final int[] cooltime = {0};
-        final Location[] location = new Location[1];
+        //final Location[] location = new Location[1];
+        HashMap<Player, Location> locationHashMap = new HashMap<>();
 
         new BukkitRunnable() {
             @Override
@@ -143,7 +145,7 @@ public class GameToggle implements CommandExecutor {
                         for (Player target : players) {
                             target.sendTitle(ChatColor.RED + "!", ChatColor.RED + "무궁화꽃이 피었습니다", 0, cooltime[0], 0);
                             target.playSound(target.getLocation(), Sound.BLOCK_NOTE_BLOCK_PLING, 1, 1.06F);
-                            location[0] = target.getLocation();
+                            locationHashMap.put(target, target.getLocation());
                         }
                     }
 
@@ -153,10 +155,10 @@ public class GameToggle implements CommandExecutor {
                                 target.damage(1);
                                 target.setNoDamageTicks(1);
                             }
-                            if (!target.getLocation().equals(location[0])) {
+                            if (!target.getLocation().equals(locationHashMap.get(target))) {
                                 target.damage(1);
                                 target.setNoDamageTicks(1);
-                                location[0] = target.getLocation();
+                                locationHashMap.put(target, target.getLocation());
                             }
                         }
                     }
